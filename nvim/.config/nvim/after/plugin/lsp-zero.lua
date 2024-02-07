@@ -8,8 +8,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    -- Replace the language servers listed here 
-    -- with the ones you want to install
+    -- languages to have LSPs installe for
     ensure_installed = {'pyright', 'lua_ls', 'vimls'},
     handlers = {
         lsp_zero.default_setup,
@@ -76,6 +75,7 @@ cmp.setup({
             --    }
             --})
 
+-- if there's no LSP, do this stuff using vanilla nvim
 lsp_zero.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
