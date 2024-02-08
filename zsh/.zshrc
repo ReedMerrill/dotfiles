@@ -91,6 +91,12 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# turn off dir switching without cd
+unsetopt autocd
+
+################################################################################
+# ALIASES
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -119,3 +125,8 @@ unset __conda_setup
 # fnm
 export PATH="/home/reed/.local/share/fnm:$PATH"
 eval "`fnm env`"
+
+# autoenv
+# enable auto env actions when leaving a dir
+AUTOENV_ENABLE_LEAVE='allow'
+source '/home/reed/.autoenv/activate.sh'
