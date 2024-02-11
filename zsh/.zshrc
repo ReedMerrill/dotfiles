@@ -130,3 +130,7 @@ eval "`fnm env`"
 # enable auto env actions when leaving a dir
 AUTOENV_ENABLE_LEAVE='allow'
 source '/home/reed/.autoenv/activate.sh'
+
+# fnm
+export PATH="/home/reed/.local/share/fnm:$PATH"
+eval "`fnm env`"
