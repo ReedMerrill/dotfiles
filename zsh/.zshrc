@@ -102,9 +102,25 @@ unsetopt autocd
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# run OBS Studio
+# [s]creen [c]apture (OBS Studio)
 alias sc='flatpak run com.obsproject.Studio'
+# Lazygit
+alias lg='lazygit'
+# Make fd the standard command for fd
+alias fd='fdfind'
+# [o]pen [f]ile: fuzzy find files and open with rifle, following symlinks
+alias of='fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
+# [o]pen [d]irectory: in neovim
+alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs nvim -c "Oil" -'
 
+# [l]ist files: ls but show hidden files and use list format
+alias l='ls -al'
+# [c]opy [o]ut: copy stdout to the system clipboard
+alias co='xclip -selection clipboard'
+# [s]ource .zshrc
+alias so='source ~/.zshrc'
+
+# Initializations
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -119,18 +135,12 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
-
 
 # fnm
 export PATH="/home/reed/.local/share/fnm:$PATH"
 eval "`fnm env`"
 
 # autoenv
+source '/home/reed/.autoenv/activate.sh'
 # enable auto env actions when leaving a dir
 AUTOENV_ENABLE_LEAVE='allow'
-source '/home/reed/.autoenv/activate.sh'
-
-# fnm
-export PATH="/home/reed/.local/share/fnm:$PATH"
-eval "`fnm env`"
