@@ -2,7 +2,7 @@
 
 sudo apt update -y && sudo apt upgrade -y
 # basics
-sudo apt install fzf fd-find ripgrep zsh
+sudo apt install fzf fd-find ripgrep zsh tmux ranger zathura xclip
 # set zsh to default
 chsh
 # lazygit
@@ -17,11 +17,12 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 ~/miniconda3/bin/conda init zsh
-# autoenv
-curl -#fLo- 'https://raw.githubusercontent.com/hyperupcall/autoenv/master/scripts/install.sh' | sh
 source ~/.zshrc
 # Python base env
 conda install python=3.11
+# autoenv
+curl -#fLo- 'https://raw.githubusercontent.com/hyperupcall/autoenv/master/scripts/install.sh' | sh
+source ~/.zshrc
 # neovim plugin dependencies
 # fnm -- Node.js environment manager
 curl -fsSL https://fnm.vercel.app/install | bash
@@ -31,6 +32,9 @@ fnm use 18
 npm install neovim # an integration -- not actual neovim
 npm install tree-sitter-cli
 # neovim
+# install
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update -y
 sudo apt install neovim -y
+# set as default
+sudo update-alternatives --config editor
