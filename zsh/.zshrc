@@ -110,9 +110,8 @@ alias lg='lazygit'
 alias fd='fdfind'
 # [o]pen [f]ile: fuzzy find files and open with rifle, following symlinks
 alias of='fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
-# [o]pen [d]irectory: in neovim
+# [o]pen [d]irectory: in neovim, and within that, in the oil file manager
 alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs nvim -c "Oil" -'
-
 # [l]ist files: ls but show hidden files and use list format
 alias l='ls -al'
 # [c]opy [o]ut: copy stdout to the system clipboard
