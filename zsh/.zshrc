@@ -113,7 +113,7 @@ alias of='fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
 # [o]pen [d]irectory: in neovim, and within that, in the oil file manager
 alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs nvim -c "Oil" -'
 # [l]ist files: ls but show hidden files and use list format
-alias l='ls -al'
+alias l='ls -al --block-size=M'
 # [c]opy [o]ut: copy stdout to the system clipboard
 alias co='xclip -selection clipboard'
 # [s]ource .zshrc
@@ -121,7 +121,7 @@ alias so='source ~/.zshrc'
 
 # Initializations
 
-# >>> conda initialize >>>
+# Conda
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/reed/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -135,7 +135,7 @@ else
 fi
 unset __conda_setup
 
-# fnm
+# fnm - node.js envs
 export PATH="/home/reed/.local/share/fnm:$PATH"
 eval "`fnm env`"
 
@@ -143,3 +143,8 @@ eval "`fnm env`"
 source '/home/reed/.autoenv/activate.sh'
 # enable auto env actions when leaving a dir
 AUTOENV_ENABLE_LEAVE='allow'
+
+# environment variables
+# make sure neovim can be found
+VISUAL='/usr/bin/nvim'
+EDITOR='/usr/bin/nvim'
