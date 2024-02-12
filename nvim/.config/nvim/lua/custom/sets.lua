@@ -1,9 +1,11 @@
 -- set leader to " "
 vim.g.mapleader = " "
 
--- line numbers
+-- editor features
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.colorcolumn = "79"
+vim.opt.cursorline = true
 
 -- indentation and format
 vim.opt.tabstop = 2
