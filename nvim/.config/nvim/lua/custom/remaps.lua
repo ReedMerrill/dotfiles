@@ -20,10 +20,10 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- paste over a highlighted word w/o saving it to the register in visual mode
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>dp", [["_dP]])
 
 -- yank to the system register in visual and normal modes
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v", "x" }, "<leader>y", [["+y]])
 
 -- make the file in buffer executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -39,7 +39,7 @@ vim.keymap.set({ "n" }, "<leader>\\", ":vsplit<CR>", {})
 
 -- Terminal stuff
 -- switch out of terminal mode
-vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
+vim.keymap.set("t", "<C-t>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 -- split nav
 vim.keymap.set("t", "<C-h", "<C-w>h", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-j", "<C-w>j", { desc = "Terminal Navigation" })
