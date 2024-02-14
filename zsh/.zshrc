@@ -110,14 +110,21 @@ alias lg='lazygit'
 alias fd='fdfind'
 # [o]pen [f]ile: fuzzy find files and open with rifle, following symlinks
 alias of='fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
-# [o]pen [d]irectory: in neovim, and within that, in the oil file manager
-alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs nvim -c "Oil" -'
+# [o]pen [d]irectory in shell
+# TODO: not working
+#alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | cd -'
+# [o]pen directory in [n]vim: in neovim, and within that, in the oil file manager
+alias on='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs nvim -c "Oil" -'
 # [l]ist files: ls but show hidden files and use list format
 alias l='ls -al --block-size=M'
 # [c]opy [o]ut: copy stdout to the system clipboard
 alias co='xclip -selection clipboard'
 # [s]ource .zshrc
 alias so='source ~/.zshrc'
+# [n]eovim [d]ot[f]iles
+alias ndf='cd ~/dotfiles/nvim/.config/nvim/ && nvim .'
+# [g]it [s]tatus
+alias gs='git status'
 
 # Initializations
 
