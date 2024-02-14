@@ -28,8 +28,9 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>y", [["+y]])
 -- make the file in buffer executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- splits
 -- navigation
+
+-- splits
 vim.keymap.set({ "n", "i" }, "<c-k>", ":wincmd k<CR>", {})
 vim.keymap.set({ "n", "i" }, "<c-j>", ":wincmd j<CR>", {})
 vim.keymap.set({ "n", "i" }, "<c-h>", ":wincmd h<CR>", {})
@@ -37,14 +38,14 @@ vim.keymap.set({ "n", "i" }, "<c-l>", ":wincmd l<CR>", {})
 -- make a new split
 vim.keymap.set({ "n" }, "<leader>\\", ":vsplit<CR>", {})
 
--- Terminal stuff
--- switch out of terminal mode
+-- Terminal
 vim.keymap.set("t", "<C-t>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
--- split nav
-vim.keymap.set("t", "<C-h", "<C-w>h", { desc = "Terminal Navigation" })
-vim.keymap.set("t", "<C-j", "<C-w>j", { desc = "Terminal Navigation" })
-vim.keymap.set("t", "<C-k", "<C-w>k", { desc = "Terminal Navigation" })
-vim.keymap.set("t", "<C-l", "<C-w>l", { desc = "Terminal Navigation" })
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal Navigation" })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal Navigation" })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal Navigation" })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal Navigation" })
+
+--
 
 -- reload the buffer from last save
 vim.keymap.set("n", "<leader>r", ":e!", { desc = "Reload buffer" })
