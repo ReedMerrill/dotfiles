@@ -1,7 +1,10 @@
 require("dapui").setup()
 require("nvim-dap-virtual-text").setup({ enabled = true, virt_text_pos = "inline" })
 require("dap-python").setup()
---vim.fn.sign_define('DapBreakpoint', { text='🔴', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
+vim.fn.sign_define(
+	"DapBreakpoint",
+	{ text = "✋", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+)
 
 -- Debugger
 vim.api.nvim_set_keymap("n", "<leader>dt", "<Cmd>lua require('dapui').toggle()<CR>", { noremap = true })

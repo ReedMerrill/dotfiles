@@ -57,5 +57,9 @@ vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal Navigation"
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal Navigation" })
 
+-- open/toggle terminal
+vim.keymap.set("n", "<C-t>", "<CMD>ToggleTerm<CR>", { desc = "Open a terminal" })
+vim.keymap.set("n", "<C-t>v", "<CMD>ToggleTerm direction=vertical size=100<CR>", { desc = "Open a terminal" })
+
 -- cycle through buffers
 vim.keymap.set("n", "<leader><tab>", "<cmd>bnext<cr>", { noremap = true })
