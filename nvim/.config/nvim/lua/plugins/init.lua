@@ -16,4 +16,6 @@ return {
 	"mrjones2014/smart-splits.nvim",
 	-- word highlighting and cycling
 	"RRethy/vim-illuminate",
+	-- neovim (lua) dev stuff
+	"folke/neodev.nvim",
 }

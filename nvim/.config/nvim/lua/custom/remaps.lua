@@ -22,6 +22,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- close the buffer, not the window (container)
+vim.keymap.set("n", "<leader>c", "<cmd>bp<bar>bd#<cr>", { desc = "Close Current Buffer" })
+
 -- editing
 
 -- paste over a highlighted word w/o saving it to the register in visual mode
