@@ -48,7 +48,7 @@ vim.keymap.set({ "n", "i" }, "<c-l>", ":wincmd l<CR>", {})
 vim.keymap.set({ "n" }, "<leader>\\", ":vsplit<CR>", {})
 
 -- Terminal
-vim.keymap.set("t", "<C-t>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
+vim.keymap.set("t", "<C-t>", "<cmd>ToggleTerm<cr>", { desc = "Exit Terminal Mode" })
 vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal Navigation" })
