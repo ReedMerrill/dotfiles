@@ -2,7 +2,7 @@
 
 sudo apt update -y && sudo apt upgrade -y
 # basics
-sudo apt install fzf fd-find ripgrep zsh tmux ranger zathura xclip atool
+sudo apt install fzf fd-find ripgrep zsh tmux ranger zathura xclip atool rofi feh
 # set zsh to default
 chsh
 # lazygit
