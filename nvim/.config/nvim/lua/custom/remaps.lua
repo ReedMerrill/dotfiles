@@ -43,19 +43,19 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- buffer navigation
 
 -- splits
-vim.keymap.set({ "n", "i" }, "<A-k>", ":wincmd k<CR>", {})
-vim.keymap.set({ "n", "i" }, "<A-j>", ":wincmd j<CR>", {})
-vim.keymap.set({ "n", "i" }, "<A-h>", ":wincmd h<CR>", {})
-vim.keymap.set({ "n", "i" }, "<A-l>", ":wincmd l<CR>", {})
+vim.keymap.set({ "n" }, "<C-k>", ":wincmd k<CR>", {})
+vim.keymap.set({ "n" }, "<C-j>", ":wincmd j<CR>", {})
+vim.keymap.set({ "n" }, "<C-h>", ":wincmd h<CR>", {})
+vim.keymap.set({ "n" }, "<C-l>", ":wincmd l<CR>", {})
 -- make a new split
 vim.keymap.set({ "n" }, "<leader>\\", ":vsplit<CR>", {})
 
 -- Terminal
 vim.keymap.set("t", "<C-t>", "<cmd>ToggleTerm<cr>", { desc = "Exit Terminal Mode" })
-vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal Navigation" })
-vim.keymap.set("t", "<A-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal Navigation" })
-vim.keymap.set("t", "<A-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal Navigation" })
-vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal Navigation" })
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal Navigation" })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal Navigation" })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal Navigation" })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal Navigation" })
 
 -- open/toggle terminal
 vim.keymap.set("n", "<C-t>", "<CMD>ToggleTerm<CR>", { desc = "Open a terminal" })
