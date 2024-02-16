@@ -155,10 +155,12 @@ bindsym $mod+r mode "resize"
 # theming
 # wallpaper
 exec always feh --bg-scale /home/reed/Picures/wallpaper.jpg
-# get gtk theme from gnome-tweaks
-exec --no-startup-id /usr/lib/gsd-xsettings
+# get gtk theme from gnome-tweaks settings
+exec --no-startup-id /usr/libexec/gsd-xsettings
 # no title-bars
 for_window [class="^.*"] border pixel 0
 # gaps
 gaps inner 10
 gaps outer 0
+# compositor
+exec compton
