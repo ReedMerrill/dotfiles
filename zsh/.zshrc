@@ -155,3 +155,6 @@ AUTOENV_ENABLE_LEAVE='allow'
 # make sure neovim can be found
 VISUAL='/usr/bin/nvim'
 EDITOR='/usr/bin/nvim'
+
+# add my Scripts directory to PATH
+export PATH="/home/reed/Scripts:$PATH"

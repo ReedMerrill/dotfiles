@@ -66,3 +66,10 @@ cd picom
 meson setup --buildtype=release build
 ninja -C build
 ninja -C build install
+# rofi theme
+rm -rf ~/.config/rofi
+git clone git@github.com:w8ste/Tokyonight-rofi-theme.git ~/.config/rofi
+sudo mv ~/.config/rofi/tokyonight.rasi /usr/share/rofi/themes
+sudo mv ~/.config/rofi/tokyonight_big1.rasi /usr/share/rofi/themes
+sudo mv ~/.config/rofi/tokyonight_big2.rasi /usr/share/rofi/themes
+rm ~/.config/rofi/README.md
