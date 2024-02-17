@@ -1,5 +1,5 @@
 return {
-	-- tanagawa theme
+	-- tokyonight theme
 	{
 		"folke/tokyonight.nvim",
 		config = function()
