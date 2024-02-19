@@ -161,6 +161,6 @@ for_window [class="^.*"] border pixel 0
 gaps inner 10
 gaps outer 0
 # compositor
-exec picom
+exec picom --daemon
 # wallpaper
 exec feh --bg-scale /home/reed/Pictures/wallpaper.jpg
