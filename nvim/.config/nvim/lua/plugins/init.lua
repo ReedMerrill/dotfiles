@@ -1,4 +1,5 @@
 return {
+	"github/copilot.vim",
 	-- tokyonight theme
 	{
 		"folke/tokyonight.nvim",
