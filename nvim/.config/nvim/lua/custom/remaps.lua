@@ -51,11 +51,12 @@ vim.keymap.set({ "n" }, "<C-l>", ":wincmd l<CR>", {})
 vim.keymap.set({ "n" }, "<leader>\\", ":vsplit<CR>", {})
 
 -- Terminal
-vim.keymap.set("t", "<C-t>", "<cmd>ToggleTerm<cr>", { desc = "Exit Terminal Mode" })
 vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal Navigation" })
+-- I need a special escape because pushing ESC messes with lazygit keybindings
+vim.keymap.set("t", "<C-t>", "<esc>", { desc = "Exit Terminal Mode" })
 
 -- open/toggle terminal
 vim.keymap.set("n", "<C-t>", "<CMD>ToggleTerm<CR>", { desc = "Open a terminal" })
