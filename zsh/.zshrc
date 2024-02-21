@@ -108,14 +108,13 @@ alias sc='flatpak run com.obsproject.Studio'
 alias lg='lazygit'
 # Make fd the standard command for fd
 alias fd='fdfind'
-# [o]pen [f]ile: fuzzy find files and open with rifle, following symlinks
-alias of='fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
-# [o]pen [d]irectory in shell
-# TODO: not working
-#alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | cd -'
+# [o]pen [f]ile: open anything, from anywhere in $HOME
+alias of='cd ~/ && fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
+# TODO: not working. [o]pen [d]irectory in shell: thanks gemini..?
+#alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs zsh -c "cd" -'
 # [o]pen directory in [n]vim: in neovim, and within that, in the oil file manager
 alias on='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs nvim -c "Oil" -'
-# [l]ist files: ls but show hidden files and use list format
+# [l]ist files: ls but show hidden files and use list format, with MB, not KB
 alias l='ls -al --block-size=M'
 # [c]opy [o]ut: copy stdout to the system clipboard
 alias co='xclip -selection clipboard'
@@ -158,3 +157,8 @@ EDITOR='/usr/bin/nvim'
 
 # add my Scripts directory to PATH
 export PATH="/home/reed/Scripts:$PATH"
+
+# image magick
+export PATH="$HOME/ImageMagick/bin:$PATH"
+export MAGICK_HOME="$HOME/ImageMagick"
+export LD_LIBRARY_PATH="$HOME/ImageMagick/lib"

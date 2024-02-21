@@ -1,4 +1,5 @@
 return {
+	"github/copilot.vim",
 	-- tokyonight theme
 	{
 		"folke/tokyonight.nvim",
@@ -18,8 +19,8 @@ return {
 	"RRethy/vim-illuminate",
 	-- neovim (lua) dev stuff
 	"folke/neodev.nvim",
-	-- Icons for files and stuff
-	"vnim-tree/nvim-web-devicons",
 	-- list of warnings, errors, and telescope outputs
 	"folke/trouble.nvim",
+	-- icons
+	"nvim-tree/nvim-web-devicons",
 }

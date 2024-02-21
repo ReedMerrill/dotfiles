@@ -53,7 +53,7 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-a>"] = cmp.mapping.complete(),
 		["<C-n>"] = cmp_action.luasnip_jump_forward(),
 		["<C-p>"] = cmp_action.luasnip_jump_backward(),
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
