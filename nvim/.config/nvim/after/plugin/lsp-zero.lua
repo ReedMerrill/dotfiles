@@ -9,7 +9,7 @@ end)
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	-- languages to have LSPs installe for
-	ensure_installed = { "pyright", "lua_ls", "vimls", "sqlls" },
+	ensure_installed = { "r_language_server", "pyright", "lua_ls", "vimls", "sqlls" },
 	handlers = {
 		lsp_zero.default_setup,
 	},
