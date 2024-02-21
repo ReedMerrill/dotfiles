@@ -47,7 +47,7 @@ return {
 		-- Set to `false` to remove a keymap
 		-- See :help oil-actions for a list of all available actions
 		keymaps = {
-			["g?"] = "actions.show_help",
+			["e?"] = "actions.show_help",
 			["<CR>"] = "actions.select",
 			["<C-s>"] = "actions.select_vsplit",
 			["<C-h>"] = "actions.select_split",
@@ -59,9 +59,9 @@ return {
 			["_"] = "actions.open_cwd",
 			["`"] = "actions.cd",
 			["~"] = "actions.tcd",
-			["gs"] = "actions.change_sort",
-			["gx"] = "actions.open_external",
-			["g."] = "actions.toggle_hidden",
+			["es"] = "actions.change_sort",
+			["ex"] = "actions.open_external",
+			["e."] = "actions.toggle_hidden",
 		},
 		-- Set to false to disable all of the above keymaps
 		use_default_keymaps = true,
