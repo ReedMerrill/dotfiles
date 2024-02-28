@@ -50,3 +50,7 @@ vim.g.copilot_filetypes = { quarto = false }
 -- zg - add word to dictionary
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
+-- disable spell checking for terminal windows
+vim.cmd([[
+  autocmd TermOpen * setlocal nospell
+]])
