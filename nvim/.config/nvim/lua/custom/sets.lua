@@ -42,7 +42,7 @@ vim.g.copilot_filetypes = { markdown = false }
 vim.g.copilot_filetypes = { quarto = false }
 
 -- turn on spell checking. Ignores code.
--- keybindings
+-- keybindings:
 -- ]s - next misspelled word
 -- [s - previous misspelled word
 -- z= - suggestions
