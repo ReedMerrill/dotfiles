@@ -42,5 +42,11 @@ vim.g.copilot_filetypes = { markdown = false }
 vim.g.copilot_filetypes = { quarto = false }
 
 -- turn on spell checking. Ignores code.
+-- keybindings
+-- ]s - next misspelled word
+-- [s - previous misspelled word
+-- z= - suggestions
+-- 1 - use first suggestion
+-- zg - add word to dictionary
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
