@@ -36,3 +36,11 @@ vim.opt.updatetime = 50
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
+
+-- disable Copilot for markdown and quarto
+vim.g.copilot_filetypes = { markdown = false }
+vim.g.copilot_filetypes = { quarto = false }
+
+-- turn on spell checking. Ignores code.
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
