@@ -124,6 +124,8 @@ alias so='source ~/.zshrc'
 alias ndf='cd ~/dotfiles/nvim/.config/nvim/ && nvim .'
 # [g]it [s]tatus
 alias gs='git status'
+# make R not prompt to save workspace on exit
+alias R='R --no-save'
 
 # Initializations
 
