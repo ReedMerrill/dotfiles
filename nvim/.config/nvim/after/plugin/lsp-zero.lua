@@ -10,7 +10,15 @@ require("mason").setup({})
 require("mason-lspconfig").setup({
 	-- languages to have LSPs installed for
 	-- refer to https://github.com/williamboman/mason-lspconfig.nvim
-	ensure_installed = { "pyright", "lua_ls", "vimls", "sqlls", "html" },
+	ensure_installed = {
+		"pyright",
+		"lua_ls",
+		"vimls",
+		"sqlls",
+		"html",
+		-- this doesn't actually work but manually installing through Mason.nvim does
+		-- "r_langauge_server",
+	},
 	handlers = {
 		lsp_zero.default_setup,
 	},
