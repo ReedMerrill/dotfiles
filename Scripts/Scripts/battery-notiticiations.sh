@@ -1,5 +1,5 @@
 #! /bin/bash
-
+echo "Battery notifications"
 # run every 5 minutes
 battery_notify() {
     while true; do
