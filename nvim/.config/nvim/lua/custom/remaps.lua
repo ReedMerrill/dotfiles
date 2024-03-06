@@ -49,6 +49,7 @@ vim.keymap.set({ "n" }, "<C-h>", ":wincmd h<CR>", {})
 vim.keymap.set({ "n" }, "<C-l>", ":wincmd l<CR>", {})
 -- make a new split
 vim.keymap.set({ "n" }, "<leader>\\", ":vsplit<CR>", {})
+vim.keymap.set({ "n" }, "<leader>\\a", ":split<CR>", {})
 
 -- Terminal
 vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal Navigation" })
