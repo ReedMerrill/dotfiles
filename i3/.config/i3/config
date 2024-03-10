@@ -152,7 +152,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# theming
 # get gtk theme from gnome-tweaks settings
 exec --no-startup-id "/usr/libexec/gsd-xsettings"
 # no title-bars
@@ -166,3 +165,5 @@ exec picom --daemon
 exec feh --bg-scale /home/reed/Pictures/wallpaper.jpg
 # start dropbox
 exec "dropbox start"
+# battery notifications
+exec ~/Scripts/battery-notifications.sh
