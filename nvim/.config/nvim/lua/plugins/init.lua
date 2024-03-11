@@ -23,6 +23,4 @@ return {
 	"folke/trouble.nvim",
 	-- icons
 	"nvim-tree/nvim-web-devicons",
-	-- path completions
-	"hrsh7th/cmp-path",
 }
