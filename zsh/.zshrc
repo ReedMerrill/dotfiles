@@ -126,6 +126,10 @@ alias ndf='cd ~/dotfiles/nvim/.config/nvim/ && nvim .'
 alias gs='git status'
 # make R not prompt to save workspace on exit
 alias R='R --no-save'
+# [t]mux [k]ill [s]ession
+alias tks='tmux kill-session -t'
+# [t]mux [a]ttach [s]ession
+alias tas='tmux attach-session -t'
 
 # Initializations
 
