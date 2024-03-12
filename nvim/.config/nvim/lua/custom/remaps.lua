@@ -66,3 +66,4 @@ vim.keymap.set("n", "<C-t>v", "<CMD>ToggleTerm direction=vertical size=100<CR>",
 -- go to previous buffer
 -- cycle through open buffers
 vim.keymap.set("n", "<leader>b", "<cmd>b#<cr>", { noremap = true })
+vim.keymap.set("n", "<leader><tab>", "<cmd>bnext<cr>", { noremap = true })
