@@ -9,8 +9,14 @@ return {
 		},
 		opts = {
 			debug = true, -- Enable debugging
-			-- See Configuration section for rest
+			mappings = {
+				close = "q",
+				reset = "<C-L>",
+				complete = "<Tab>",
+				submit_prompt = "<CR>",
+				accept_diff = "<C-y>",
+				show_diff = "<C-d>",
+			},
 		},
-		-- See Commands section for default commands if you want to lazy load on them
 	},
 }
