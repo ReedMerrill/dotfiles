@@ -167,3 +167,8 @@ exec feh --bg-scale /home/reed/Pictures/wallpaper.jpg
 exec "dropbox start"
 # battery notifications
 exec ~/Scripts/battery-notifications.sh
+
+# Autostart applications
+exec --no-startup-id i3-msg 'workspace 1; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace 2; exec firefox'
+exec --no-startup-id i3-msg 'workspace 3; exec obsidian'
