@@ -130,6 +130,8 @@ alias R='R --no-save'
 alias tks='tmux kill-session -t'
 # [t]mux [a]ttach [s]ession
 alias tas='tmux attach-session -t'
+# [t]mux [l]ist [s]essions
+alias tls='tmux ls'
 
 # Initializations
 
