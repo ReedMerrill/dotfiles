@@ -132,6 +132,8 @@ alias tks='tmux kill-session -t'
 alias tas='tmux attach-session -t'
 # [t]mux [l]ist [s]essions
 alias tls='tmux ls'
+# [n]uclear [r]e[m]ove
+alias nrm='sudo rm -r'
 
 # Initializations
 
