@@ -1,0 +1,21 @@
+#! /usr/bin/zsh
+
+SESSIONNAME="toxicity"
+
+# check if the session exists
+tmux has-session -t $SESSIONNAME &> /dev/null
+
+if [ $? != 0 ]
+ then
+    tmux new-session -s $SESSIONNAME -n script -d
+    # go to the project directory
+    tmux send-keys -t $SESSIONNAME "cd ~/Projects/learned-toxicity-reddit/reddit-toxicity-analysis" C-m
+    # open up nvim
+    tmux send-keys -t $SESSIONNAME "nvim ." C-m
+    # split the window
+    tmux split-window -h -t $SESSIONNAME
+    # open the reference stuff in the new split
+    tmux send-keys -t $SESSIONNAME "nvim ~/Projects/mlm-term-paper/analysis.r" C-m
+fi
+
+tmux attach -t $SESSIONNAME
