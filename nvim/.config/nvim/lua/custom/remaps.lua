@@ -40,13 +40,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- buffer navigation
+-- splits/navigation
 
--- splits
-vim.keymap.set({ "n" }, "<C-k>", ":wincmd k<CR>", {})
-vim.keymap.set({ "n" }, "<C-j>", ":wincmd j<CR>", {})
-vim.keymap.set({ "n" }, "<C-h>", ":wincmd h<CR>", {})
-vim.keymap.set({ "n" }, "<C-l>", ":wincmd l<CR>", {})
 -- make a new split
 vim.keymap.set({ "n" }, "<leader>\\", ":vsplit<CR>", {})
 vim.keymap.set({ "n" }, "<leader>\\a", ":split<CR>", {})
@@ -55,6 +50,8 @@ vim.keymap.set({ "n" }, "<leader>\\a", ":split<CR>", {})
 vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal Navigation" })
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal Navigation" })
+-- this probably conflicts the tmux navigation stuff, but I never do because my
+-- terminal is always on the left
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal Navigation" })
 -- Exit terminal mode
 vim.keymap.set("t", "<C-t>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })

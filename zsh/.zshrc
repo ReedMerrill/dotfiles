@@ -171,5 +171,5 @@ export PATH="$HOME/ImageMagick/bin:$PATH"
 export MAGICK_HOME="$HOME/ImageMagick"
 export LD_LIBRARY_PATH="$HOME/ImageMagick/lib"
 
-# Created by `pipx` on 2024-02-29 21:16:59
-export PATH="$PATH:/home/reed/.local/bin"
+# disable ctrl-l clearing the screen
+bindkey -r "^L"
