@@ -108,11 +108,11 @@ alias sc='flatpak run com.obsproject.Studio'
 alias lg='lazygit'
 # Make fd the standard command for fd
 alias fd='fdfind'
-# [o]pen [f]ile: open anything, from anywhere in $HOME
-alias of='cd ~/ && fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
+# [o]pen [f]ile: open anything, using rifle as the opener
+alias of='fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
 # TODO: not working. [o]pen [d]irectory in shell: thanks gemini..?
 #alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs zsh -c "cd" -'
-# [o]pen directory in [n]vim: in neovim, and within that, in the oil file manager
+# [o]pen directory in [n]vim: in neovim in the oil file manager
 alias on='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs nvim -c "Oil" -'
 # [l]ist files: ls but show hidden files and use list format, with MB, not KB
 alias l='ls -al --block-size=M'
