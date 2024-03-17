@@ -112,8 +112,6 @@ alias fd='fdfind'
 alias of='fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
 # TODO: not working. [o]pen [d]irectory in shell: thanks gemini..?
 #alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs zsh -c "cd" -'
-# [o]pen directory in [n]vim: in neovim in the oil file manager
-alias on='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs nvim -c "Oil" -'
 # [l]ist files: ls but show hidden files and use list format, with MB, not KB
 alias l='ls -al --block-size=M'
 # [c]opy [o]ut: copy stdout to the system clipboard
