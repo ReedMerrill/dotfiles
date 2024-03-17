@@ -77,3 +77,9 @@ rm ~/.config/rofi/README.md
 # tpm
 md ~/.tmux/plugins/
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# cht.sh
+# curl the script to somewhere in $PATH
+PATH_DIR="$HOME/bin"  # or another directory on your $PATH
+mkdir -p "$PATH_DIR"
+curl https://cht.sh/:cht.sh > "$PATH_DIR/cht.sh"
+chmod +x "$PATH_DIR/cht.sh"
