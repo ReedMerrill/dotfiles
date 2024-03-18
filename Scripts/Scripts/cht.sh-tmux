@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+read -p "Enter Query: " query
+
+bash -c "cht.sh $query | less"
