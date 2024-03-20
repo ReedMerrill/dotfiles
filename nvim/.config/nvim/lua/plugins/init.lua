@@ -1,4 +1,12 @@
 return {
+	{
+		"folke/todo-comments.nvim",
+		event = "VimEnter",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = { signs = false },
+	},
+	-- "gc" to comment visual regions/lines
+	{ "numToStr/Comment.nvim", opts = {} },
 	-- tokyonight theme
 	{
 		"folke/tokyonight.nvim",
