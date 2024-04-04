@@ -152,6 +152,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# toggle color inversion
+bindsym $mod+i exec --no-startup-id xcalib -i -a
+
 # get gtk theme from gnome-tweaks settings
 exec --no-startup-id "/usr/libexec/gsd-xsettings"
 # no title-bars
