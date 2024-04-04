@@ -102,8 +102,6 @@ unsetopt autocd
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# [s]creen [c]apture (OBS Studio)
-alias sc='flatpak run com.obsproject.Studio'
 # Lazygit
 alias lg='lazygit'
 # Make fd the standard command for fd
