@@ -1,4 +1,0 @@
-return {
-    'mhartington/formatter.nvim'
-}
-
