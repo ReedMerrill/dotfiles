@@ -27,3 +27,4 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 setxkbmap -option caps:swapescape
+. "$HOME/.cargo/env"
