@@ -1,3 +1,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:ReedMerrill/nvim.git
+[submodule "yazi"]
+	path = yazi
+	url = git@github.com:ReedMerrill/yazi.git
