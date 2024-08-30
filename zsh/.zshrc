@@ -171,3 +171,6 @@ export LD_LIBRARY_PATH="$HOME/ImageMagick/lib"
 
 # disable ctrl-l clearing the screen
 bindkey -r "^L"
+
+# source rust toolchain
+. "$HOME/.cargo/env"
