@@ -4,3 +4,6 @@
 [submodule "yazi"]
 	path = yazi
 	url = git@github.com:ReedMerrill/yazi.git
+[submodule "aliases"]
+	path = aliases
+	url = git@github.com:ReedMerrill/aliases.git

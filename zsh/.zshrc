@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+source $HOME/.aliases
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -93,43 +95,6 @@ source $ZSH/oh-my-zsh.sh
 
 # turn off dir switching without cd
 unsetopt autocd
-
-################################################################################
-# ALIASES
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
-# Lazygit
-alias lg='lazygit'
-# Make fd the standard command for fd
-alias fd='fdfind'
-# [o]pen [f]ile: open anything, using rifle as the opener
-alias of='fd --type f --hidden --follow --exclude .git | fzf | xargs rifle'
-# TODO: not working. [o]pen [d]irectory in shell: thanks gemini..?
-#alias od='fd . "/home/reed" --type d --hidden --follow --exclude .git | fzf | xargs zsh -c "cd" -'
-# [l]ist files: ls but show hidden files and use list format, with MB, not KB
-alias l='ls -al --block-size=M'
-# [c]opy [o]ut: copy stdout to the system clipboard
-alias co='xclip -selection clipboard'
-# [s]ource .zshrc
-alias so='source ~/.zshrc'
-# [n]eovim [d]ot[f]iles
-alias ndf='cd ~/dotfiles/nvim/.config/nvim/ && nvim .'
-# [g]it [s]tatus
-alias gs='git status'
-# make R not prompt to save workspace on exit
-alias R='R --no-save'
-# [t]mux [k]ill [s]ession
-alias tks='tmux kill-session -t'
-# [t]mux [a]ttach [s]ession
-alias tas='tmux attach-session -t'
-# [t]mux [l]ist [s]essions
-alias tls='tmux ls'
-# [n]uclear [r]e[m]ove
-alias nrm='sudo rm -r'
 
 # Initializations
 
