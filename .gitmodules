@@ -7,3 +7,6 @@
 [submodule "aliases"]
 	path = aliases
 	url = git@github.com:ReedMerrill/aliases.git
+[submodule "zsh"]
+	path = zsh
+	url = https://github.com/ReedMerrill/zsh.git
