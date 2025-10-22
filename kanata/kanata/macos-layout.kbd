@@ -27,7 +27,7 @@
   fn lctl lalt lmet            spc           rmet  ralt
 )
 
-;; just put in the @nav_sys alias and remap caps to esc
+;; put in the @spc_nav alias, remap caps to esc, align mod order with Lenovo
 
 (deflayer base
   esc  🔅   🔆   ✗    ✗    ✗    ✗    ◀◀   ▶⏸   ▶▶   🔇   🔉   🔊
@@ -35,7 +35,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  a    s    d    f    g    h    j    k    l    ;    '         ret
   lsft z    x    c    v    b    n    m    ,    .    /              rsft
-  ✗  lctl lalt  lmet       @spc_nav          rmet  ralt
+  lctl fn lmet lalt        @spc_nav          rmet  ralt
 )
 
 (deflayer nav
