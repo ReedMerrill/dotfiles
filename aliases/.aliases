@@ -1,3 +1,7 @@
+# kanata
+alias kanata="~/kanata/kanata"
+alias kanata-toggle="~/kanata/kanata-toggle"
+alias kanata-quit="~/kanata/kanata-quit"
 # python is python3
 alias python='python3'
 # Lazygit

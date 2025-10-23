@@ -1,0 +1,48 @@
+;; REMAPS FOR THE MACOS BUILT-IN KEYBOARD
+
+;; This an essentially normal layout.
+
+;; It has a tap-hold on the f key where, when held, f serves as a modifier that
+;; activates the nav layer, where hjkl are remapped to the arrow keys to enable
+;; Vim-type navigation everywhere.
+
+;; It also reorders the left modifier keys so that they follow the Windows and 
+;; Linux pattern of CTRL, MOD, ALT. It also disables the left function key.
+
+(defcfg
+  process-unmapped-keys yes
+  macos-dev-names-include (
+    "RK61-5.0"
+  )
+)
+
+(defalias 
+  nav (layer-while-held nav)
+  spc_nav (tap-hold 200 200 spc @nav)
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '         ret
+  lsft z    x    c    v    b    n    m    ,    .    /              rsft
+  lctl lmet lalt           spc           ralt rmet rctl fn
+)
+
+;; put in the @spc_nav alias, remap caps to esc, align mod order with Lenovo
+
+(deflayer base
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  a    s    d    f    g    h    j    k    l    ;    '         ret
+  lsft z    x    c    v    b    n    m    ,    .    /              rsft
+  lctl lmet lalt         @spc_nav        ralt rmet rctl fn
+)
+
+(deflayer nav
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+ lrld ◀◀   🔉   🔊   ▶⏸   ▶▶   lft  down up   rght _    _         _
+  _   _    _    _    _    _    _    _    _    _    _              _
+  _    _    _              _              _   _    _    _
+)

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+STATE_FILE="/Users/reed/kanata/.kanata_state"
+KANATA_EXEC="/Users/reed/kanata/kanata_1.7_macos_cmd_allowed_arm64"
+CONFIG_A="/Users/reed/kanata/macos-60pct-layout.kbd"
+CONFIG_B="/Users/reed/kanata/macos-internal-layout.kbd"
+
+# Kill existing kanata process, if any.
+if pgrep -f "$KANATA_EXEC" > /dev/null; then
+    sudo pkill -f "$KANATA_EXEC"
+    sleep 0.2 # Give it a moment to die to avoid race conditions
+fi
+
+# Read current state. If file doesn't exist, default to "b" so we toggle to "a".
+CURRENT_STATE=$(cat "$STATE_FILE" 2>/dev/null || echo "b")
+
+if [[ "$CURRENT_STATE" == "a" ]]; then
+  # Toggle to B
+  echo "Switching to Kanata config B"
+  sudo "$KANATA_EXEC" --cfg "$CONFIG_B"
+  echo "b" > "$STATE_FILE"
+else
+  # Toggle to A
+  echo "Switching to Kanata config A"
+  sudo "$KANATA_EXEC" --cfg "$CONFIG_A"
+  echo "a" > "$STATE_FILE"
+fi
