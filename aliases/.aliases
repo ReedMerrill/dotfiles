@@ -1,3 +1,5 @@
+# run R targets
+alias targets="Rscript -e 'targets::tar_make()'"
 # kanata
 alias kanata="~/kanata/kanata"
 alias kanata-toggle="~/kanata/kanata-toggle"
