@@ -65,10 +65,23 @@ function rest() {
 }
 
 ################################################################################
+# yazi shell wrapper - allows for changing the cwd when exiting yazi
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+################################################################################
 # INITIALIZATIONS
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+
 source <(fzf --zsh)
 
 # pnpm
@@ -114,9 +127,8 @@ function cd() {
   fi
 }
 
-
 # Created by `pipx` on 2025-05-08 02:56:54
 export PATH="$PATH:/Users/reed/.local/bin"
 
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-. "/Users/reed/.deno/env"
+# Added by Antigravity
+export PATH="/Users/reed/.antigravity/antigravity/bin:$PATH"
