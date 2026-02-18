@@ -1,0 +1,50 @@
+;; REMAPS FOR THE LENOVO BUILT-IN KEYBOARD
+
+;; This an essentially normal layout.
+
+;; It has a tap-hold on the space bar where, when held, f serves as a modifier 
+;; that activates the nav layer, where hjkl are remapped to the arrow keys to
+;; enable Vim-type navigation everywhere.
+
+;; It also reorders the left modifier keys so that they follow the Windows and 
+;; Linux pattern of CTRL, MOD, ALT. It also disables the left function key.
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defalias 
+  nav (layer-while-held nav)
+  spc_nav (tap-hold 200 200 spc @nav)
+)
+
+(defsrc
+;; rmet in row 1 is just hack because an unused keyname is needed, and a "stop" keyname won't work
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 ins prnt del ▶⏸ rmet ◀◀ ▶▶ 
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc pgdn  kp/ kp* kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \          kp7 kp8 kp9 kp+
+  caps a    s    d    f    g    h    j    k    l    ;    '         ret        kp4 kp5 kp6
+  lsft z    x    c    v    b    n    m    ,    .    /       up     rsft       kp1 kp2 kp3 pgup
+  lctl lalt lmet            spc           ralt rctl lft down    rght          kp0 kp.
+)
+
+;; just put in the @nav_sys alias and remap caps to esc
+
+(deflayer base
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ✗ ✗ ✗ ✗ ✗ ✗ ✗
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ✗ ✗ ✗ ✗
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     ✗ ✗ ✗ ✗
+  esc  a    s    d    f    g    h    j    k    l    ;    '         ret   ✗ ✗ ✗
+  lsft z    x    c    v    b    n    m    ,    .    /    up        rsft  ✗ ✗ ✗ ✗
+  lctl lalt lmet       @spc_nav            ralt rctl lft down right      ✗ ✗
+)
+
+
+(deflayer nav
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _ _ _ _ _ _ _
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _ _ _ _ _
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _ _ _ _ _
+ lrld _    _    _    _    _    lft  down up   rght _    _         _ _ _ _
+  _   _    _    _    _    _    _    _    _    _    _     _        _ _ _ _ _
+  _   _    _                   _              _    _   _ _ _      _ _ 
+)

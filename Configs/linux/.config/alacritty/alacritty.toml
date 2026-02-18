@@ -1,0 +1,21 @@
+import = [
+  "~/.config/alacritty/theme.toml"
+]
+
+[window]
+decorations = "None"
+
+[font]
+normal = { family = "0xProtoNerdFontMono", style = "Regular" }
+bold = { family = "0xProtoNerdFontMono", style = "Bold" }
+italic = { family = "0xProtoNerdFontMono", style = "italic" }
+size = 8.25
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = false
+
+[env]
+TERM = "xterm-256color"
