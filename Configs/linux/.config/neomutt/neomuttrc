@@ -1,0 +1,16 @@
+# Auth
+set from        = "reed.merrill@ucalgary.ca"
+set realname    = "Reed Merrill"
+set hostname    = "office365.ucalgary.ca"
+set imap_user   = "reed.merrill@ucalgary.ca"
+set smtp_pass   = $ucpw
+set imap_pass   = $ucpw
+set folder      = "imaps://reed.merrill@ucalgary.ca@outlook.office365.com"
+set spoolfile   = "+INBOX"
+set smtp_url    = "smtp://reed.merrill@ucalgary.ca@smtp.office365.com:587"
+set imap_authenticators = "xoauth2"
+set imap_oauth_refresh_command = "/Users/reed/Scripts/mutt_oauth2.py /Users/reed/Scripts/mutt_token"
+set smtp_authenticators = ${imap_authenticators}
+set smtp_oauth_refresh_command = ${imap_oauth_refresh_command}
+set ssl_force_tls = "yes"
+set ssl_starttls  = "yes"
