@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[user]
+	email = reedjmerrill@gmail.com
+	name = Reed Merrill
+[pull]
+	rebase = true
