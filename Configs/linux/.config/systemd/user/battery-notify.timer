@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic battery check
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

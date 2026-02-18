@@ -1,0 +1,7 @@
+[Unit]
+Description=Battery notification service
+
+[Service]
+Type=oneshot
+ExecStart=/home/reed/scripts/battery_notify.sh
+
