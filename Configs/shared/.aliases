@@ -15,7 +15,7 @@ alias dc='fd . --type d --hidden --follow --exclude .git | fzf | while read -r d
 # [s]ource .zshrc
 alias so='source ~/.zshrc'
 # [n]eovim [d]ot[f]iles
-alias ndf='cd ~/dotfiles/nvim/.config/nvim/ && nvim .'
+alias ndf='cd ~/.config/nvim/ && nvim .'
 # [g]it [s]tatus
 alias gs='git status'
 # [g]it [l]og

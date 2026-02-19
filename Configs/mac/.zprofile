@@ -51,3 +51,6 @@ export PATH="$PATH:/Users/reed/.local/bin"
 
 export ucpw=$(security find-generic-password -a "$USER" -s ucalgarypw -w)
 export GPG_TTY=$(tty)
+
+# Mac-specific aliases (CMB)
+alias db='cd "/Users/reed/Can. Mun. Barometer Dropbox/Reed Merrill/cmb_main/"' 

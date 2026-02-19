@@ -34,17 +34,6 @@ alias l="eza -l --icons --git --all --modified"
 # list with 2-level tree
 alias lt="eza --tree --level=2 --all --long --icons --git --modified"
 
-# Directory Navigation
-
-# fixing annoying mandatory [d]rop[b]ox folder name on linked account
-alias db="cd /Users/reed/Can.\ Mun.\ Barometer\ Dropbox/Reed\ Merrill/cmb_main/"
-# [p]rojects
-alias p="cd /Users/reed/projects"
-# [n]eovim [d]ot[f]iles
-alias ndf='cd ~/dotfiles/nvim/.config/nvim/ && nvim .'
-# [d]ot[f]iles
-alias df='cd ~/dotfiles/ && nvim .'
-
 ################################################################################
 # Pomodoro
 
