@@ -26,7 +26,7 @@ export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 
 # Keyboard and input tweaks
 setxkbmap us
-xset r rate 225 15
+xset r rate 200 15
 # enable tap to click on touchpad
 xinput set-prop 11 "libinput Tapping Enabled" 1
 
