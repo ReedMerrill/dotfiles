@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
 })
 
 vim.api.nvim_create_autocmd("WinLeave", {
-	desc = "Turn on the cursorline when entering a buffer",
+	desc = "Turn off the cursorline when exiting a buffer",
 	callback = function()
 		vim.opt.cursorline = false
 	end,
