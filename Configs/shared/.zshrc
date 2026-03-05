@@ -38,7 +38,7 @@ alias lt="eza --tree --level=2 --all --long --icons --git --modified"
 # Pomodoro
 
 function work() {
-  local duration="${1:-55m}"
+  local duration="${1:-20m}"
   timer "$duration" && terminal-notifier -message 'Pomodoro' \
     -title 'Work Timer is up! Take a Break 😊' \
     -appIcon "$HOME/Pictures/pumpkin.png" \
@@ -46,7 +46,7 @@ function work() {
 }
 
 function rest() {
-  local duration="${1:-5m}"
+  local duration="${1:-2m}"
   timer "$duration" && terminal-notifier -message 'Pomodoro' \
     -title 'Break is over! Get back to work 😬' \
     -appIcon "$HOME/Pictures/pumpkin.png" \
