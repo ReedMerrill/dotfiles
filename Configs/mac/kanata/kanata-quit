@@ -2,13 +2,17 @@
 
 STATE_FILE="/Users/reed/kanata/.kanata_state"
 KANATA_EXEC="/Users/reed/kanata/kanata_1.7_macos_cmd_allowed_arm64"
-CONFIG_A="/Users/reed/kanata/macos-60pct-layout.kbd"
-CONFIG_B="/Users/reed/kanata/macos-internal-layout.kbd"
+WATCHDOG_EXEC="/Users/reed/kanata/kanata-watchdog"
 
 # Kill existing kanata process, if any.
 if pgrep -f "$KANATA_EXEC" > /dev/null; then
     sudo pkill -f "$KANATA_EXEC"
-    sleep 0.2 # Give it a moment to die to avoid race conditions
+    sleep 0.2
     echo "b" > "$STATE_FILE"
 fi
 
+# Kill the watchdog if it's running
+if pgrep -f "$WATCHDOG_EXEC" > /dev/null; then
+    echo "Stopping kanata watchdog..."
+    sudo pkill -f "$WATCHDOG_EXEC"
+fi
