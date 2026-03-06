@@ -51,7 +51,7 @@ function work() {
 }
 
 function rest() {
-  local minutes="${1:-2}"
+  local minutes="${1:-1.5}"
   local duration="${minutes}m"
 
   local duration="${minutes}m"
