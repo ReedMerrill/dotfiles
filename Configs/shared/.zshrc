@@ -38,19 +38,31 @@ alias lt="eza --tree --level=2 --all --long --icons --git --modified"
 # Pomodoro
 
 function work() {
-  local duration="${1:-20m}"
-  timer "$duration" && terminal-notifier -message 'Pomodoro' \
-    -title 'Work Timer is up! Take a Break 😊' \
+  local minutes="${1:-20}"
+  local duration="${minutes}m"
+
+  timer "$duration" && terminal-notifier \
+    -title "Work Timer is up! Take a Break 😊" \
+    -message "Pomodoro" \
     -appIcon "$HOME/Pictures/pumpkin.png" \
-    -sound Crystal
+    -sound Crystal \
+    -group pomodoro \
+    -ignoreDnD
 }
 
 function rest() {
-  local duration="${1:-2m}"
-  timer "$duration" && terminal-notifier -message 'Pomodoro' \
-    -title 'Break is over! Get back to work 😬' \
+  local minutes="${1:-2}"
+  local duration="${minutes}m"
+
+  local duration="${minutes}m"
+  timer "$duration" && terminal-notifier \
+    -title "Break is over! Get back to work 😬" \
+    -message "Pomodoro" \
     -appIcon "$HOME/Pictures/pumpkin.png" \
-    -sound Crystal
+    -sound Crystal \
+    -group pomodoro \
+    -ignoreDnD
+
 }
 
 ################################################################################
