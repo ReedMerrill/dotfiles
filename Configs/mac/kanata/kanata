@@ -1,27 +1,61 @@
 #!/bin/bash
 
+# Configuration
 STATE_FILE="/Users/reed/kanata/.kanata_state"
 KANATA_EXEC="/Users/reed/kanata/kanata_1.7_macos_cmd_allowed_arm64"
+WATCHDOG_EXEC="/Users/reed/kanata/kanata-watchdog"
 CONFIG_A="/Users/reed/kanata/macos-60pct-layout.kbd"
 CONFIG_B="/Users/reed/kanata/macos-internal-layout.kbd"
 
-# Kill existing kanata process, if any.
-if pgrep -f "$KANATA_EXEC" > /dev/null; then
-    sudo pkill -f "$KANATA_EXEC"
-    sleep 0.2 # Give it a moment to die to avoid race conditions
+# Helper to run kanata and wait for it silently
+run_kanata_and_wait() {
+    local config=$1
+    # Run in background and capture PID
+    sudo "$KANATA_EXEC" --cfg "$config" &
+    local kanata_pid=$!
+    
+    # Ignore SIGTERM so we don't print "Terminated" when watchdog kills us
+    trap 'exit 0' SIGTERM
+    
+    # Wait for the process to finish
+    wait $kanata_pid 2>/dev/null
+}
+
+# 1. Handle "restart" command (called by watchdog)
+if [[ "$1" == "restart" ]]; then
+    CURRENT_STATE=$(cat "$STATE_FILE" 2>/dev/null || echo "b")
+    # Kill old process
+    sudo pkill -f "$KANATA_EXEC" >/dev/null 2>&1
+    sleep 0.2
+    
+    if [[ "$CURRENT_STATE" == "a" ]]; then
+        echo "Restarting Kanata with config A..."
+        run_kanata_and_wait "$CONFIG_A"
+    else
+        echo "Restarting Kanata with config B..."
+        run_kanata_and_wait "$CONFIG_B"
+    fi
+    exit 0
 fi
 
-# Read current state. If file doesn't exist, default to "b" so we toggle to "a".
+# 2. Start watchdog if not running
+if ! pgrep -f "$WATCHDOG_EXEC" > /dev/null; then
+    echo "Starting kanata watchdog..."
+    sudo nohup "$WATCHDOG_EXEC" > /dev/null 2>&1 &
+fi
+
+# 3. Standard Toggle Logic
+sudo pkill -f "$KANATA_EXEC" >/dev/null 2>&1
+sleep 0.2
+
 CURRENT_STATE=$(cat "$STATE_FILE" 2>/dev/null || echo "b")
 
 if [[ "$CURRENT_STATE" == "a" ]]; then
-  # Toggle to B
-  echo "Switching to Kanata config B"
-  sudo "$KANATA_EXEC" --cfg "$CONFIG_B"
-  echo "b" > "$STATE_FILE"
+    echo "Switching to Kanata config B"
+    echo "b" > "$STATE_FILE"
+    run_kanata_and_wait "$CONFIG_B"
 else
-  # Toggle to A
-  echo "Switching to Kanata config A"
-  sudo "$KANATA_EXEC" --cfg "$CONFIG_A"
-  echo "a" > "$STATE_FILE"
+    echo "Switching to Kanata config A"
+    echo "a" > "$STATE_FILE"
+    run_kanata_and_wait "$CONFIG_A"
 fi
