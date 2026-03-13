@@ -1,4 +1,11 @@
 require("conform").setup({
+	formatters = {
+		ruff_format = {
+			command = "ruff",
+			args = { "format", "-" },
+			stdin = true,
+		},
+	},
 	formatters_by_ft = {
 		csharp = { "csharpier" },
 		html = { "prettier" },
@@ -6,7 +13,7 @@ require("conform").setup({
 		json = { "prettier" },
 		lua = { "stylua" },
 		markdown = { "prettier" },
-		python = { "ruff" },
+		python = { "ruff_format" },
 		r = { "air" },
 		sql = { "sqruff" },
 		quarto = { "injected" },
