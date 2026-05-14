@@ -33,18 +33,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- enter insert mode when focusing a terminal
-vim.api.nvim_create_autocmd("BufEnter", {
-	desc = "Set terminal to insert mode",
-	group = termgroup,
-	pattern = "term://*",
-	callback = function()
-		vim.schedule(function()
-			vim.cmd(":startinsert")
-		end)
-	end,
-})
-
 -- cursorline on for the current buffer only
 vim.api.nvim_create_autocmd("WinEnter", {
 	desc = "Turn on the cursorline when entering a buffer",
