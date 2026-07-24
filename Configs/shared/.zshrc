@@ -80,3 +80,4 @@ function y() {
 # Plugin initializations
 
 eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
