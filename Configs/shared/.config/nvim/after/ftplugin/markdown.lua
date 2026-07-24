@@ -1,3 +1,4 @@
+vim.opt.conceallevel = 0
 vim.opt.linebreak = true
 vim.opt.wrap = true
 
