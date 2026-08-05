@@ -182,12 +182,6 @@ return {
 			})
 		end,
 	},
-	-- telescope (for LSP related pickers)
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
 	-- Debugger
 	{
 		"mfussenegger/nvim-dap",
