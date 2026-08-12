@@ -1,5 +1,7 @@
 # Initialization
 
+tuckr operations need to be done from the root of the tuckr project.
+
 on Linux, symlink the `linux` and `shared` groups with:
 
 ```bash
