@@ -1,2 +1,3 @@
 .kanata_state
 Configs/shared/.config/nvim/node_modules/*
+Configs/shared/.config/yazi/plugins/*
