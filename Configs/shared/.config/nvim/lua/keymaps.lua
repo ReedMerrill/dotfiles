@@ -119,8 +119,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- splits/navigation
 
 -- make a new split
-vim.keymap.set({ "n" }, "<leader>\\", ":vsplit<CR>", {})
-vim.keymap.set({ "n" }, "<leader>\\a", ":split<CR>", {})
+vim.keymap.set({ "n" }, "<leader>v", ":vsplit<CR>", { desc = "Split pane vertically" })
+vim.keymap.set({ "n" }, "<leader>h", ":split<CR>", { desc = "Split pane horizontally" })
 
 -- Terminal navigation
 vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal Navigation" })
