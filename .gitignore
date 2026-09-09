@@ -1,3 +1,8 @@
 .kanata_state
 Configs/shared/.config/nvim/node_modules/*
 Configs/shared/.config/yazi/plugins/*
+
+# herdr writes logs, sockets, session state and plugin checkouts alongside its
+# config; only config.toml is a dotfile.
+Configs/shared/.config/herdr/*
+!Configs/shared/.config/herdr/config.toml

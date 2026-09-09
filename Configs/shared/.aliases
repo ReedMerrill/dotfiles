@@ -28,3 +28,5 @@ alias nrm='sudo rm -r'
 alias cl='clear'
 # make dir (and all non-existent directories in the specified path)
 alias md='mkdir -p'
+# for csvlens to always use comma as the delimiter
+alias csvlens='csvlens -c'
