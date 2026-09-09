@@ -44,18 +44,35 @@ if ! pgrep -f "$WATCHDOG_EXEC" > /dev/null; then
     sudo nohup "$WATCHDOG_EXEC" > /dev/null 2>&1 &
 fi
 
-# 3. Standard Toggle Logic
+# 3. Pick a config: "kanata a" or "kanata b" to choose, bare "kanata" to toggle
+CURRENT_STATE=$(cat "$STATE_FILE" 2>/dev/null || echo "b")
+
+case "$1" in
+    a|b)
+        NEW_STATE="$1"
+        ;;
+    "")
+        if [[ "$CURRENT_STATE" == "a" ]]; then
+            NEW_STATE="b"
+        else
+            NEW_STATE="a"
+        fi
+        ;;
+    *)
+        echo "usage: kanata [a|b]" >&2
+        exit 2
+        ;;
+esac
+
 sudo pkill -f "$KANATA_EXEC" >/dev/null 2>&1
 sleep 0.2
 
-CURRENT_STATE=$(cat "$STATE_FILE" 2>/dev/null || echo "b")
-
-if [[ "$CURRENT_STATE" == "a" ]]; then
-    echo "Switching to Kanata config B"
-    echo "b" > "$STATE_FILE"
-    run_kanata_and_wait "$CONFIG_B"
-else
+if [[ "$NEW_STATE" == "a" ]]; then
     echo "Switching to Kanata config A"
     echo "a" > "$STATE_FILE"
     run_kanata_and_wait "$CONFIG_A"
+else
+    echo "Switching to Kanata config B"
+    echo "b" > "$STATE_FILE"
+    run_kanata_and_wait "$CONFIG_B"
 fi
