@@ -33,7 +33,7 @@ detach = "prefix+q"
 reload_config = "prefix+shift+r"
 open_notification_target = "prefix+o"
 workspace_picker = "prefix+w"
-goto = "prefix+s"
+# goto = "prefix+s"
 new_workspace = "prefix+shift+n"
 new_worktree = "prefix+shift+w"
 open_worktree = "prefix+shift+o"
@@ -60,11 +60,11 @@ edit_scrollback = "prefix+e"
 
 cycle_pane_next = ""
 cycle_pane_previous = ""
-# last_pane = "prefix+b"
+last_pane = "prefix+l"
 split_vertical = "prefix+v"
 split_horizontal = "prefix+h"
 close_pane = "prefix+x"
-zoom = "prefix+z"       # legacy alias: fullscreen
+zoom = "prefix+z"
 resize_mode = "prefix+r"
 toggle_sidebar = "prefix+a"
 
@@ -164,6 +164,13 @@ key = "prefix+shift+f"
 type = "plugin_action"
 command = "herdr-file-viewer.open-file-viewer-tab"
 description = "open file viewer in tab"
+
+# sesh
+[[keys.command]]
+key = "prefix+s"   # or whatever key you pick
+type = "shell"
+command = "herdr plugin pane open --plugin fullerzz.sesh --entrypoint picker --placement overlay --focus"
+description = "open Sesh picker in overlay"
 
 [worktrees]
 directory = "~/.herdr/worktrees"
