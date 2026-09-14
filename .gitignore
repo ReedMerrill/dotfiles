@@ -3,6 +3,14 @@ Configs/shared/.config/nvim/node_modules/*
 Configs/shared/.config/yazi/plugins/*
 
 # herdr writes logs, sockets, session state and plugin checkouts alongside its
-# config; only config.toml is a dotfile.
+# config; only config.toml and plugin configs are dotfiles. Plugins themselves
+# are pinned in Hooks/shared/herdr-plugins.txt.
 Configs/shared/.config/herdr/*
 !Configs/shared/.config/herdr/config.toml
+!Configs/shared/.config/herdr/plugins/
+Configs/shared/.config/herdr/plugins/*
+!Configs/shared/.config/herdr/plugins/config/
+Configs/shared/.config/herdr/plugins/config/*
+!Configs/shared/.config/herdr/plugins/config/fullerzz.sesh/
+Configs/shared/.config/herdr/plugins/config/fullerzz.sesh/*
+!Configs/shared/.config/herdr/plugins/config/fullerzz.sesh/config.toml

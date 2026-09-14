@@ -1,0 +1,12 @@
+# herdr plugins, installed by post_herdr_plugins.sh on `tuckr set shared`.
+#
+# Format: OWNER/REPO[/SUBDIR] COMMIT
+#
+# To add or bump a plugin, edit this file and re-run the hook, or install it
+# by hand with `herdr plugin install` and refresh the pins with:
+#   Hooks/shared/post_herdr_plugins.sh --freeze > Hooks/shared/herdr-plugins.txt
+
+fullerzz/herdr-plugin-sesh 6bb24f357513ea5d0b451ad884d3185807ca8e1f
+smarzban/herdr-file-viewer 71d4c1c3706e7958c714789b035a99d949620a9e
+lmilojevicc/herdr-last 444c12f51fa8f712588cd1481dcd5459f658eac9
+bojackduy/nvim-herdr-navigation/herdr-vim-navigator 7798a2f027465698cb1a51695327e138319f61f3

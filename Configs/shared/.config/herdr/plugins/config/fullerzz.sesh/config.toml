@@ -1,0 +1,42 @@
+version = 1 # (1)!
+
+[list]
+cache = true
+source_order = ["herdr", "config", "zoxide", "dir"] # (2)!
+blacklist = ["^scratch$"]
+
+[naming]
+path_components = 1
+
+[picker]
+show_icons = true
+show_path = true
+show_preview = true
+preview_mode = "command"
+prioritize_home = false
+herdr_theme_inherit = true
+replace_worktree_icon = true
+prompt = "Sesh> "
+placeholder = "Search workspaces"
+separator_aware = true
+workspace_sort = "agent"
+show_last_workspace = true
+show_last_workspace_path = false
+
+[workspace_defaults]
+startup = "git status"
+preview = "eza --icons=always --color=always -la {}"
+
+[[tab]]
+name = "git"
+startup = "git status"
+
+[[rule]]
+path_glob = "~/projects/**"
+startup = "git status"
+preview = "eza --icons=always --color=always -la {}"
+tabs = ["git"]
+
+# [[workspace]]
+# name = "Example"
+# path = "~/projects/example"
