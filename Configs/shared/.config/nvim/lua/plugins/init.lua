@@ -212,15 +212,6 @@ return {
 	{ "theHamsta/nvim-dap-virtual-text" },
 	{ "HiPhish/rainbow-delimiters.nvim" },
 	{
-		"alexghergh/nvim-tmux-navigation",
-		config = function()
-			require("nvim-tmux-navigation").setup({ disable_when_zoomed = true })
-		end,
-		cond = function()
-			return vim.env.HERDR_PANE_ID == nil
-		end,
-	},
-	{
 		"bojackduy/nvim-herdr-navigation",
 		submodules = false,
 		cond = function()
@@ -258,19 +249,7 @@ return {
 				sections = {
 					lualine_a = {},
 					lualine_c = {},
-					lualine_x = {
-						{
-							function()
-								local util = require("util")
-								if util.is_tmux then
-									local sess = util.tmux_session()
-									local win = util.tmux_window()
-									return (" %s: %s"):format(sess or "-", win or "-")
-								end
-								return ""
-							end,
-						},
-					},
+					lualine_x = {},
 					lualine_y = { "encoding", "fileformat" },
 					lualine_z = { "location" },
 				},
@@ -365,6 +344,7 @@ return {
 	-- better text objects
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 	-- more "around" and "inside" actions

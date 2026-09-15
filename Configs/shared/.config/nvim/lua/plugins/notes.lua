@@ -191,20 +191,11 @@ return {
 				end
 				return title
 			end,
+			-- completion is provided by the built-in obsidian-ls LSP server
+			-- `gf` on links works natively via the includeexpr obsidian sets on note buffers
 			completion = {
 				create_new = true,
-				nvim_cmp = false,
-				blink = true,
 				min_chars = 2,
-			},
-			mappings = {
-				-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-				["gf"] = {
-					action = function()
-						return require("obsidian").util.gf_passthrough()
-					end,
-					opts = { noremap = false, expr = true, buffer = true },
-				},
 			},
 		},
 	},

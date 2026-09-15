@@ -1,6 +1,3 @@
--- enable treesitter syntax highlighting
-vim.cmd("TSBufEnable highlight")
-
 vim.keymap.set("n", "<leader><CR>", function()
 	require("nvim-python-repl").send_statement_definition()
 end, { desc = "Send semantic unit to REPL" })
