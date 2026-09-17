@@ -26,12 +26,21 @@ run_kanata_and_wait() {
     wait $kanata_pid 2>/dev/null
 }
 
-# Pick a config: "kanata a" or "kanata b" to choose, bare "kanata" to toggle
+# Pick a config: "kanata a" or "kanata b" to choose, bare "kanata" to toggle,
+# "kanata quit" to stop kanata entirely
 CURRENT_STATE=$(cat "$STATE_FILE" 2>/dev/null || echo "b")
 
 case "$1" in
     a|b)
         NEW_STATE="$1"
+        ;;
+    quit)
+        if pgrep -f "$KANATA_EXEC" > /dev/null; then
+            sudo pkill -f "$KANATA_EXEC"
+            sleep 0.2
+            echo "b" > "$STATE_FILE"
+        fi
+        exit 0
         ;;
     "")
         if [[ "$CURRENT_STATE" == "a" ]]; then
@@ -41,7 +50,7 @@ case "$1" in
         fi
         ;;
     *)
-        echo "usage: kanata [a|b]" >&2
+        echo "usage: kanata [a|b|quit]" >&2
         exit 2
         ;;
 esac
