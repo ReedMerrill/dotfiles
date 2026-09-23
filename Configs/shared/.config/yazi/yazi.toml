@@ -1,2 +1,14 @@
 [mgr]
 linemode = "size_and_mtime"
+
+# Launcher behaviour
+
+[opener]
+csvlens = [
+  { run = 'csvlens %s1', block = true, desc = "csvlens", for = "unix" },
+]
+
+[open]
+prepend_rules = [
+  { url = "*.csv", use = ["csvlens", "edit"] },
+]
