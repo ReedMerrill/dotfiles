@@ -168,9 +168,9 @@ type = "plugin_action"
 command = "herdr-file-viewer.open-file-viewer-tab"
 description = "open file viewer in tab"
 
-# sesh
+# sesh (session picker)
 [[keys.command]]
-key = "prefix+s"   # or whatever key you pick
+key = "prefix+s"
 type = "shell"
 command = "herdr plugin pane open --plugin fullerzz.sesh --entrypoint picker --placement overlay --focus"
 description = "open Sesh picker in overlay"

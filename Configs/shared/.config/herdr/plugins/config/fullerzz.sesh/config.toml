@@ -3,7 +3,7 @@ version = 1 # (1)!
 [list]
 cache = true
 source_order = ["herdr", "config", "zoxide", "dir"] # (2)!
-blacklist = ["^scratch$"]
+blacklist = [] # ex: "^scratch$"
 
 [naming]
 path_components = 1
