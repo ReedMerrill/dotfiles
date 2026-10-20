@@ -1,5 +1,5 @@
 # restart yabai
-cmd - e : yabai --resart-service
+cmd - e : yabai --restart-service
 
 # focus window
 # cmd - x : yabai -m window --focus recent
