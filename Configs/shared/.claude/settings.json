@@ -3,29 +3,6 @@
     "defaultMode": "auto"
   },
   "model": "opus",
-  "worktree": {
-    "baseRef": "fresh"
-  },
-  "workflowKeywordTriggerEnabled": false,
-  "effortLevel": "high",
-  "modelSettings": {
-    "claude-opus-5": {
-      "effortLevel": "high"
-    },
-    "claude-opus-5-5": {
-      "effortLevel": "xhigh"
-    }
-  },
-  "awaySummaryEnabled": false,
-  "tui": "fullscreen",
-  "skipDangerousModePermissionPrompt": true,
-  "theme": "custom:gruvbox",
-  "editorMode": "vim",
-  "verbose": true,
-  "fileCheckpointingEnabled": false,
-  "remoteControlAtStartup": false,
-  "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true,
   "hooks": {
     "PostToolUse": [
       {
@@ -39,5 +16,28 @@
         ]
       }
     ]
-  }
+  },
+  "worktree": {
+    "baseRef": "fresh"
+  },
+  "workflowKeywordTriggerEnabled": false,
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "awaySummaryEnabled": false,
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "custom:gruvbox",
+  "editorMode": "vim",
+  "verbose": true,
+  "fileCheckpointingEnabled": false,
+  "remoteControlAtStartup": false,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
 }
