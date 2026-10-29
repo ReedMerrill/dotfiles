@@ -27,7 +27,7 @@
       "effortLevel": "high"
     },
     "claude-opus-5-5": {
-      "effortLevel": "high"
+      "effortLevel": "low"
     }
   },
   "awaySummaryEnabled": false,

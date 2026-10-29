@@ -14,3 +14,4 @@ Configs/shared/.config/herdr/plugins/config/*
 !Configs/shared/.config/herdr/plugins/config/fullerzz.sesh/
 Configs/shared/.config/herdr/plugins/config/fullerzz.sesh/*
 !Configs/shared/.config/herdr/plugins/config/fullerzz.sesh/config.toml
+/Configs/shared/.claude/settings.json
