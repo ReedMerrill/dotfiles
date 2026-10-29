@@ -1,7 +1,3 @@
--- set vault paths
-local cmb = "/Users/reed/Can. Mun. Barometer Dropbox/Reed Merrill/3-resources/obsidian/CMB"
-local main = "/Users/reed/Dropbox (Personal)/obsidian-vaults/main"
-
 return {
 	-- to do plugin with metadata, archiving, group check-offs
 	{
@@ -163,6 +159,10 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
+		keys = {
+			-- jumps straight to the note when there's a single backlink, otherwise opens a picker
+			{ "<leader>o", "<cmd>Obsidian backlinks<cr>", ft = "markdown", desc = "Obsidian Backlinks (up one level)" },
+		},
 		opts = {
 			ui = {
 				enable = true,
@@ -176,6 +176,10 @@ return {
 				{
 					name = "obsidian-workspace",
 					path = "~/Can. Mun. Barometer Dropbox/Reed Merrill/3-resources/obsidian/CMB",
+				},
+				{
+					name = "book-project",
+					path = "/Users/reed/Dropbox (Personal)/obsidian-vaults/book-projects/the-experience",
 				},
 			},
 			-- customize how note IDs are generated given an optional title.

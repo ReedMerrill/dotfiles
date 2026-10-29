@@ -26,6 +26,13 @@ return {
 			end,
 			desc = "Command History",
 		},
+		{
+			"<leader><leader>",
+			function()
+				Snacks.picker.commands()
+			end,
+			desc = "Command Palette",
+		},
 		-- find
 		{
 			"<leader>fb",
