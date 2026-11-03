@@ -57,5 +57,5 @@ vim.g.copilot_filetypes = { quarto = false }
 -- z= - suggestions
 -- 1 - use first suggestion
 -- zg - add word to dictionary
-vim.opt.spelllang = "en_us"
+vim.opt.spelllang = "en_ca"
 vim.opt.spell = true
