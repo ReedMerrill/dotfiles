@@ -174,12 +174,16 @@ return {
 			legacy_commands = false,
 			workspaces = {
 				{
-					name = "obsidian-workspace",
+					name = "work",
 					path = "~/Can. Mun. Barometer Dropbox/Reed Merrill/3-resources/obsidian/CMB",
 				},
 				{
 					name = "book-project",
 					path = "/Users/reed/Dropbox (Personal)/obsidian-vaults/book-projects/the-experience",
+				},
+				{
+					name = "notes",
+					path = "/Users/reed/Dropbox (Personal)/obsidian-vaults/main",
 				},
 			},
 			-- customize how note IDs are generated given an optional title.
@@ -200,6 +204,13 @@ return {
 			completion = {
 				create_new = true,
 				min_chars = 2,
+			},
+			callbacks = {
+				-- follow [[data.csv]] links into the file with csvview on, instead of
+				-- offering to create a note called "data.csv"
+				post_setup = function()
+					require("misc.obsidian_csv").patch()
+				end,
 			},
 		},
 	},
