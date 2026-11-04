@@ -1,6 +1,81 @@
--- cmd+k clears the terminal; the session picker moves to cmd+s
-rex.bind("cmd+k", "com.superlogical.terminal.clear")
-rex.bind("cmd+s", "session.switch")
+-- Last session (herdr-last's prefix+b): jump back to the previously active session.
+--
+-- Rex doesn't tell init.lua which session the app is showing, but every key
+-- handler and action gets the session it ran in (ctx.session_id). So we note the
+-- session on each key that can leave it (pane navigation, the session bindings
+-- below) and read the "previous" one back when prefix+b is pressed. State lives
+-- in a file so it survives config reloads and server restarts.
+local state_path = (os.getenv("HOME") or "") .. "/.local/state/rex-last-session"
+
+local function load_sessions()
+	local f = io.open(state_path, "r")
+	if not f then
+		return nil, nil
+	end
+	local current, previous = f:read("*l"), f:read("*l")
+	f:close()
+	return current ~= "" and current or nil, previous ~= "" and previous or nil
+end
+
+local function save_sessions(current, previous)
+	local f = io.open(state_path, "w")
+	if f then
+		f:write(current or "", "\n", previous or "", "\n")
+		f:close()
+	end
+end
+
+-- Record the session a key was pressed in; the one we were in before becomes "previous".
+local function track(ctx)
+	local id = ctx and ctx.session_id
+	if not id then
+		return
+	end
+	local current, previous = load_sessions()
+	if id ~= current then
+		save_sessions(id, current or previous)
+	end
+end
+
+local function session_exists(id)
+	for _, session in ipairs(rex.call("session.list").sessions or {}) do
+		if session.session_id == id then
+			return true
+		end
+	end
+	return false
+end
+
+-- Key handlers can't queue client actions, so everything that switches sessions is
+-- a rex.action that notes the session first and then performs the app's own action.
+local function session_action(name, title, client_action)
+	rex.action({
+		name = name,
+		title = title,
+		run = function(ctx)
+			track(ctx)
+			rex.client.queue(client_action)
+		end,
+	})
+end
+
+session_action("session_switch", "Change Session…", "session.switch")
+session_action("session_new", "New Session", "session.new")
+session_action("session_previous", "Previous Session", "session.previous")
+
+rex.action({
+	name = "session_last",
+	title = "Last Session",
+	run = function(ctx)
+		track(ctx)
+		local current, previous = load_sessions()
+		if not previous or not session_exists(previous) then
+			return
+		end
+		save_sessions(previous, current)
+		rex.client.queue("session.select", { session_id = previous })
+	end,
+})
 
 -- tmux
 rex.bind("ctrl+space>ctrl+space", "pane.send_key", { key = "ctrl+space" })
@@ -12,12 +87,14 @@ rex.mode("resize", { exclusive = true })
 rex.bind("resize/enter", "client.mode.exit")
 rex.bind("resize/escape", "client.mode.exit")
 
+rex.bind("ctrl+space>c", "com.superlogical.terminal.clear")
 rex.bind("ctrl+space>,", "client.settings")
 rex.bind("ctrl+space>shift+r", "client.config.reload")
-rex.bind("ctrl+space>w", "session.switch")
-rex.bind("ctrl+space>shift+n", "session.new")
+rex.bind("ctrl+space>s", "session_switch")
+rex.bind("ctrl+space>b", "session_last")
+rex.bind("ctrl+space>shift+n", "session_new")
 rex.bind("ctrl+space>d", "session.close")
-rex.bind("ctrl+space>ctrl+b", "session.previous")
+rex.bind("ctrl+space>ctrl+b", "session_previous")
 rex.bind("ctrl+space>n", "client.tab.new")
 rex.bind("ctrl+space>shift+t", "client.tab.rename")
 rex.bind("ctrl+space>ctrl+tab", "client.tab.previous")
@@ -60,6 +137,7 @@ end
 
 for key, direction in pairs(nav_directions) do
 	rex.bind("ctrl+" .. key, function(ctx)
+		track(ctx)
 		local proc = rex.block.call("com.superlogical.terminal", "process", { block_id = ctx.block_id })
 		if is_nvim(proc) then
 			-- Not handled: the key is sent on to the focused terminal (Nvim).
