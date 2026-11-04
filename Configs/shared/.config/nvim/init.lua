@@ -26,6 +26,7 @@ require("lazy").setup("plugins")
 
 -- load sets and remaps
 require("keymaps")
+require("rex_nav")
 require("opts")
 require("autocmds")
 
