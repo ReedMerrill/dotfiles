@@ -87,6 +87,7 @@ rex.mode("resize", { exclusive = true })
 rex.bind("resize/enter", "client.mode.exit")
 rex.bind("resize/escape", "client.mode.exit")
 
+rex.bind("ctrl+space>p", "client.palette.toggle")
 rex.bind("ctrl+space>c", "com.superlogical.terminal.clear")
 rex.bind("ctrl+space>,", "client.settings")
 rex.bind("ctrl+space>shift+r", "client.config.reload")
