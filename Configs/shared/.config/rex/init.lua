@@ -78,7 +78,133 @@ rex.action({
 	end,
 })
 
+-- Open-or-focus a named session (herdr-open-notes / herdr-open-files): switch to
+-- the session with this label if one exists, otherwise create it in `dir` and
+-- type `startup` into its shell, so the shell stays open after the program quits.
+local function open_or_focus(name, title, label, dir, startup)
+	rex.action({
+		name = name,
+		title = title,
+		run = function(ctx)
+			track(ctx)
+			local id
+			for _, session in ipairs(rex.call("session.list").sessions or {}) do
+				if session.label == label then
+					id = session.session_id
+					break
+				end
+			end
+			if not id then
+				local created = rex.call("session.create", {
+					label = label,
+					initial_windows = {
+						{
+							layout = {
+								block = {
+									flavor = "com.superlogical.terminal.shell",
+									options = { cwd = dir },
+								},
+							},
+						},
+					},
+				})
+				id = created.session_id
+				local block_id = created.initial_windows[1].block_ids[1]
+				rex.block.call("com.superlogical.terminal", "write", {
+					block_id = block_id,
+					data = startup .. "\n",
+				})
+			end
+			rex.client.queue("session.select", { session_id = id })
+		end,
+	})
+end
+
+local home = os.getenv("HOME") or ""
+
+open_or_focus(
+	"open_notes",
+	"Open Notes Session",
+	"notes",
+	home .. "/Can. Mun. Barometer Dropbox/Reed Merrill/3-resources/obsidian/CMB",
+	"nvim tasks/next.todo.md"
+)
+open_or_focus("open_files", "Open Files Session", "files", home, "yazi")
+
+local terminal = "com.superlogical.terminal"
+
+-- the focused pane's foreground process, with its name, pid and cwd
+local function foreground(ctx)
+	local proc = rex.block.call(terminal, "process", { block_id = ctx.block_id })
+	return proc and proc.foreground
+end
+
+-- the focused pane's directory, from what the shell last reported or else its foreground process
+local function focused_cwd(ctx)
+	local pwd = rex.block.call(terminal, "pwd", { block_id = ctx.block_id })
+	if pwd and pwd.pwd then
+		return (pwd.pwd:gsub("^file://[^/]*", ""))
+	end
+	local fg = foreground(ctx)
+	return fg and fg.cwd
+end
+
+-- a terminal pane layout running command, or a shell if command is nil, in cwd
+local function shell(command, cwd)
+	return rex.layout.block({ flavor = terminal .. ".shell", options = { command = command, cwd = cwd } })
+end
+
+-- a palette action that opens a floating pane in the focused pane's directory,
+-- running command or a shell bounds is x, y, w, h as fractions of the window,
+-- nearly full-window by default
+local function float(spec)
+	rex.action({
+		name = spec.name,
+		title = spec.title,
+		keywords = spec.keywords,
+		run = function(ctx)
+			local _, err = rex.session.new_layer({
+				bounds = spec.bounds or { 0.05, 0.05, 0.9, 0.9 },
+				layout = shell(spec.command, focused_cwd(ctx)),
+				focus = true,
+			})
+			if err then
+				error(err)
+			end
+		end,
+	})
+end
+-- the scripts next to this file, and the float sizes they use
+local scripts = os.getenv("HOME") .. "/.config/rex/"
+local picker = { 0.25, 0.2, 0.5, 0.5 }
+local prompt = { 0.3, 0.4, 0.4, 0.2 }
+
+float({
+	name = "scratch_float",
+	title = "Scratch Terminal",
+	keywords = "scratch terminal float",
+})
+
+float({
+	name = "lazygit_float",
+	title = "Lazygit",
+	keywords = "git lazygit float",
+	command = { "lazygit" },
+})
+
+float({
+	name = "yazi_float",
+	title = "yazi",
+	keywords = "yazi files",
+	command = { "yazi" },
+})
+
+rex.bind("cmd+g", "lazygit_float")
+rex.bind("cmd+shift+t", "scratch_float")
+rex.bind("cmd+;", "yazi_float")
 rex.bind("cmd+p", "client.palette.toggle")
+rex.bind("ctrl+space>j", "open_notes")
+rex.bind("ctrl+space>k", "open_files")
 rex.bind("ctrl+space>,", "client.settings")
 rex.bind("ctrl+space>shift+r", "client.config.reload")
 rex.bind("ctrl+s", "session_switch")
@@ -98,9 +224,10 @@ rex.bind("ctrl+space>6", "client.tab.goto", { index = 6 })
 rex.bind("ctrl+space>7", "client.tab.goto", { index = 7 })
 rex.bind("ctrl+space>8", "client.tab.goto", { index = 8 })
 rex.bind("ctrl+space>9", "client.tab.goto", { index = 9 })
+rex.bind("cmd+w", "client.tab.close")
 rex.bind("ctrl+space>v", "pane.split", { direction = "right" })
 rex.bind("ctrl+space>h", "pane.split", { direction = "down" })
-rex.bind("ctrl+space>x", "pane.close")
+rex.bind("cmd+x", "pane.close")
 rex.bind("ctrl+space>z", "pane.zoom")
 rex.bind("ctrl+space>r", "client.mode.enter", { name = "resize" })
 rex.mode("resize", { exclusive = true })
