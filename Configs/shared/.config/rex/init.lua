@@ -46,8 +46,9 @@ local function session_exists(id)
 	return false
 end
 
--- Key handlers can't queue client actions, so everything that switches sessions is
--- a rex.action that notes the session first and then performs the app's own action.
+-- Key handlers can't queue client actions, so everything that switches
+-- sessions is a rex.action that notes the session first and then performs the
+-- app's own action.
 local function session_action(name, title, client_action)
 	rex.action({
 		name = name,
@@ -77,29 +78,17 @@ rex.action({
 	end,
 })
 
--- tmux
-rex.bind("ctrl+space>ctrl+space", "pane.send_key", { key = "ctrl+space" })
-rex.bind("ctrl+space>j", "client.tab.previous")
-rex.bind("ctrl+space>k", "client.tab.next")
-
--- Herdr
-rex.mode("resize", { exclusive = true })
-rex.bind("resize/enter", "client.mode.exit")
-rex.bind("resize/escape", "client.mode.exit")
-
-rex.bind("ctrl+space>p", "client.palette.toggle")
-rex.bind("ctrl+space>c", "com.superlogical.terminal.clear")
+rex.bind("cmd+p", "client.palette.toggle")
 rex.bind("ctrl+space>,", "client.settings")
 rex.bind("ctrl+space>shift+r", "client.config.reload")
-rex.bind("ctrl+space>s", "session_switch")
+rex.bind("ctrl+s", "session_switch")
+rex.bind("cmd+s", "session_switch")
 rex.bind("ctrl+space>b", "session_last")
 rex.bind("ctrl+space>shift+n", "session_new")
 rex.bind("ctrl+space>d", "session.close")
 rex.bind("ctrl+space>ctrl+b", "session_previous")
-rex.bind("ctrl+space>n", "client.tab.new")
 rex.bind("ctrl+space>shift+t", "client.tab.rename")
 rex.bind("ctrl+space>ctrl+tab", "client.tab.previous")
-rex.bind("ctrl+space>tab", "client.tab.next")
 rex.bind("ctrl+space>1", "client.tab.goto", { index = 1 })
 rex.bind("ctrl+space>2", "client.tab.goto", { index = 2 })
 rex.bind("ctrl+space>3", "client.tab.goto", { index = 3 })
@@ -109,17 +98,17 @@ rex.bind("ctrl+space>6", "client.tab.goto", { index = 6 })
 rex.bind("ctrl+space>7", "client.tab.goto", { index = 7 })
 rex.bind("ctrl+space>8", "client.tab.goto", { index = 8 })
 rex.bind("ctrl+space>9", "client.tab.goto", { index = 9 })
-rex.bind("ctrl+space>shift+x", "client.tab.close")
 rex.bind("ctrl+space>v", "pane.split", { direction = "right" })
 rex.bind("ctrl+space>h", "pane.split", { direction = "down" })
 rex.bind("ctrl+space>x", "pane.close")
 rex.bind("ctrl+space>z", "pane.zoom")
 rex.bind("ctrl+space>r", "client.mode.enter", { name = "resize" })
-rex.bind("resize/left", "pane.resize", { direction = "left" })
-rex.bind("resize/down", "pane.resize", { direction = "down" })
-rex.bind("resize/up", "pane.resize", { direction = "up" })
-rex.bind("resize/right", "pane.resize", { direction = "right" })
-rex.bind("ctrl+space>a", "client.sidebar.toggle")
+rex.mode("resize", { exclusive = true })
+rex.bind("resize/escape", "client.mode.exit")
+rex.bind("resize/h", "pane.resize", { direction = "left" })
+rex.bind("resize/j", "pane.resize", { direction = "down" })
+rex.bind("resize/k", "pane.resize", { direction = "up" })
+rex.bind("resize/l", "pane.resize", { direction = "right" })
 
 -- Seamless ctrl+h/j/k/l navigation between Nvim windows and Rex panes.
 -- When Nvim is the foreground program, the key falls through to it (see
@@ -136,6 +125,9 @@ local function is_nvim(proc)
 	return fg ~= nil and (basename(fg.argv0) == "nvim" or basename(fg.name) == "nvim")
 end
 
+-- set the nvim navigation keybindings to be ctrl+h/j/k/l, and if the focused
+-- terminal is not nvim, then move focus to the neighbouring pane in the
+-- specified direction.
 for key, direction in pairs(nav_directions) do
 	rex.bind("ctrl+" .. key, function(ctx)
 		track(ctx)
