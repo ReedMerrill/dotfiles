@@ -33,3 +33,9 @@ desc = "Delete all bookmarks"
 [[mgr.prepend_keymap]]
 on  = "M"
 run = "plugin mount"
+
+# Copy file contents to the system clipboard (selected files, or the hovered one)
+[[mgr.prepend_keymap]]
+on   = [ "c", "y" ]
+run  = 'shell -- for f in "$@"; do [ "$(file -b --mime-encoding "$f")" = binary ] && exit 1; done; cat "$@" | pbcopy'
+desc = "Copy file contents to the system clipboard"
