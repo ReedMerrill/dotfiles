@@ -238,6 +238,26 @@ return {
 		-- Use lualine for the status line
 		"nvim-lualine/lualine.nvim",
 		config = function()
+			-- markdown word count that ignores <!-- comments -->, cached per changedtick
+			local words_cache = {}
+			local function md_words()
+				local buf = vim.api.nvim_get_current_buf()
+				local tick = vim.api.nvim_buf_get_changedtick(buf)
+				local hit = words_cache[buf]
+				if hit and hit.tick == tick then
+					return hit.text
+				end
+				local text = table.concat(vim.api.nvim_buf_get_lines(buf, 0, -1, false), "\n")
+				text = text:gsub("<!%-%-.-%-%->", " ")
+				local n = 0
+				for _ in text:gmatch("%S+") do
+					n = n + 1
+				end
+				local label = n .. " words"
+				words_cache[buf] = { tick = tick, text = label }
+				return label
+			end
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -250,7 +270,16 @@ return {
 					lualine_a = {},
 					lualine_c = {},
 					lualine_x = {},
-					lualine_y = { "encoding", "fileformat" },
+					lualine_y = {
+						{
+							md_words,
+							cond = function()
+								return vim.bo.filetype == "markdown"
+							end,
+						},
+						"encoding",
+						"fileformat",
+					},
 					lualine_z = { "location" },
 				},
 			})

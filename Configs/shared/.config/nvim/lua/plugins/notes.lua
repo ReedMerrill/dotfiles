@@ -172,6 +172,14 @@ return {
 				},
 			},
 			legacy_commands = false,
+			-- no {{words}}: obsidian counts <!-- comments --> (plain vim.fn.wordcount()),
+			-- so the word count lives in lualine instead (see plugins/init.lua)
+			footer = {
+				format = "{{backlinks}} backlinks  {{properties}} properties",
+			},
+			statusline = {
+				format = "{{backlinks}} backlinks  {{properties}} properties",
+			},
 			workspaces = {
 				{
 					name = "work",
